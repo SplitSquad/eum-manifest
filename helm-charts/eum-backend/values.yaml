@@ -111,7 +111,7 @@ services:
     name: alarm
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-alarm
-      tag: 86e53b8f7ae37e69b6b79061d4cdccf405a72231
+      tag: 7dfec069b5e5b9fde6fdfdf8f9fe1872b1aa4ee7
     port: 8082
     replicas: 1
     resources:
