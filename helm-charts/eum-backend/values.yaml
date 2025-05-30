@@ -12,7 +12,7 @@ services:
     name: user
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-user
-      tag: 83380cf62eed225e8aebcd267ca44e37294dc6b3
+      tag: f8e1e815d74b049d6f09c33b481191478c596104
     port: 8081
     replicas: 1
     resources:
