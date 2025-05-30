@@ -1,0 +1,89 @@
+global:
+  namespace: eum-infra
+
+namespace:
+  create: true
+  name: eum-infra
+  labels:
+    name: eum-infra
+
+services:
+  redis:
+    enabled: true
+    name: redis
+    image:
+      repository: redis
+      tag: "7.2-alpine"
+      pullPolicy: IfNotPresent
+    port: 6379
+    targetPort: 6379
+    type: ClusterIP
+    clusterIP: None
+    replicas: 1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 256Mi
+    persistence:
+      enabled: false
+      # size: 1Gi
+      # storageClass: ""
+    config:
+      enabled: true
+      data: |
+        # Redis Configuration
+        maxmemory 256mb
+        maxmemory-policy allkeys-lru
+        save 900 1
+        save 300 10
+        save 60 10000
+    command:
+      - redis-server
+      - /usr/local/etc/redis/redis.conf
+    volumeMounts:
+      - name: redis-data
+        mountPath: /data
+      - name: redis-config
+        mountPath: /usr/local/etc/redis/redis.conf
+        subPath: redis.conf
+
+  kafka:
+    enabled: true
+    name: kafka
+    image:
+      repository: bitnami/kafka
+      tag: "3.6.1"
+      pullPolicy: IfNotPresent
+    port: 9092
+    targetPort: 9092
+    type: ClusterIP
+    replicas: 1
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+    env:
+      - name: ALLOW_PLAINTEXT_LISTENER
+        value: "yes"
+      - name: KAFKA_CFG_LISTENERS
+        value: "PLAINTEXT://:9092,CONTROLLER://:9093"
+      - name: KAFKA_CFG_ADVERTISED_LISTENERS
+        value: "PLAINTEXT://kafka.eum-infra.svc.cluster.local:9092"
+      - name: KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP
+        value: "PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT"
+      - name: KAFKA_ENABLE_KRAFT
+        value: "yes"
+      - name: KAFKA_CFG_NODE_ID
+        value: "1"
+      - name: KAFKA_CFG_PROCESS_ROLES
+        value: "broker,controller"
+      - name: KAFKA_CFG_CONTROLLER_QUORUM_VOTERS
+        value: "1@localhost:9093"
+      - name: KAFKA_CFG_CONTROLLER_LISTENER_NAMES
+        value: "CONTROLLER" 

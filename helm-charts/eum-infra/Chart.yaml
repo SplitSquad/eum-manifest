@@ -1,0 +1,19 @@
+apiVersion: v2
+name: eum-infra
+description: EUM Infrastructure Services Helm Chart
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - infrastructure
+  - redis
+  - kafka
+  - database
+  - messaging
+
+maintainers:
+  - name: SplitSquad Team
+    email: team@eum.com
+
+sources:
+  - https://github.com/SplitSquad/eum-packaging.git 

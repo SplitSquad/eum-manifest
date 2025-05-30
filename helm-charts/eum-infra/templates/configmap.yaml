@@ -1,0 +1,24 @@
+{{- range $serviceName, $service := .Values.services }}
+{{- if and $service.enabled $service.config }}
+{{- if $service.config.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $service.name }}-config
+  namespace: {{ $.Values.global.namespace }}
+  labels:
+    app: {{ $service.name }}
+    chart: {{ include "eum-infra.chart" $ }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+data:
+  {{- if eq $serviceName "redis" }}
+  redis.conf: |
+{{ $service.config.data | indent 4 }}
+  {{- else }}
+{{ toYaml $service.config.data | indent 2 }}
+  {{- end }}
+{{- end }}
+{{- end }}
+{{- end }} 
