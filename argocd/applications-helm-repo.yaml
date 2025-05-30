@@ -11,7 +11,7 @@ spec:
       targetRevision: 0.1.0
       helm:
         valueFiles:
-          - $values/charts/eum-ai/values.yaml
+          - $values/helm-charts/eum-ai/values.yaml
     - repoURL: https://github.com/splitsquad/eum-manifest.git
       targetRevision: main
       ref: values
@@ -38,7 +38,7 @@ spec:
       targetRevision: 0.1.0
       helm:
         valueFiles:
-          - $values/charts/eum-backend/values.yaml
+          - $values/helm-charts/eum-backend/values.yaml
     - repoURL: https://github.com/splitsquad/eum-manifest.git
       targetRevision: main
       ref: values
@@ -65,7 +65,7 @@ spec:
       targetRevision: 0.1.0
       helm:
         valueFiles:
-          - $values/charts/eum-infra/values.yaml
+          - $values/helm-charts/eum-infra/values.yaml
     - repoURL: https://github.com/splitsquad/eum-manifest.git
       targetRevision: main
       ref: values
