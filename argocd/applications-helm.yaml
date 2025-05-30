@@ -52,7 +52,7 @@ spec:
   source:
     repoURL: https://github.com/SplitSquad/eum-manifest.git
     targetRevision: main
-    path: eum-infra
+    path: helm-charts/eum-infra
   destination:
     server: https://kubernetes.default.svc
     namespace: eum-infra
