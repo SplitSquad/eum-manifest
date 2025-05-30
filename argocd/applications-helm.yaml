@@ -1,0 +1,62 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eum-ai
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/SplitSquad/eum-manifest.git
+    targetRevision: main
+    path: helm-charts/eum-ai
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: eum-ai
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    # syncOptions:
+    #   - CreateNamespace=true
+    #   - Replace=true  # 기존 리소스 교체
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eum-backend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/SplitSquad/eum-manifest.git
+    targetRevision: main
+    path: helm-charts/eum-backend
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: eum-backend
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eum-infra
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/SplitSquad/eum-manifest.git
+    targetRevision: main
+    path: eum-infra
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: eum-infra
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 

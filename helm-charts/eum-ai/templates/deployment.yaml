@@ -1,0 +1,59 @@
+{{- range $serviceName, $service := .Values.services }}
+{{- if $service.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $service.name }}
+  namespace: {{ $.Values.global.namespace }}
+  labels:
+    app: {{ $service.name }}
+    chart: {{ include "eum-ai.chart" $ }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+spec:
+  replicas: {{ $service.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $service.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ $service.name }}
+    spec:
+      containers:
+        - name: {{ $service.name }}
+          image: {{ $service.image.repository }}:{{ $service.image.tag }}
+          ports:
+            - containerPort: {{ $service.port }}
+          resources:
+{{ toYaml $service.resources | indent 12 }}
+          env:
+{{- if $service.config }}
+{{- range $key, $value := $service.config }}
+            - name: {{ $key }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ $service.name }}-config
+                  key: {{ $key }}
+{{- end }}
+{{- end }}
+{{- if $service.secrets }}
+{{- range $key, $value := $service.secrets }}
+            - name: {{ $key }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $service.name }}-secret
+                  key: {{ $key }}
+{{- end }}
+{{- end }}
+          volumeMounts:
+{{- if $service.volumeMounts }}
+{{ toYaml $service.volumeMounts | indent 12 }}
+{{- end }}
+      volumes:
+{{- if $service.volumes }}
+{{ toYaml $service.volumes | indent 8 }}
+{{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,17 @@
+{{- range $name, $svc := .Values.services }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ $name }}-test-connection"
+  labels:
+    {{- include "eum-backend.labels" $ | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ $name }}:{{ $svc.port }}']
+  restartPolicy: Never
+{{- end }}
