@@ -43,3 +43,26 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true 
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eum-infra-helm-repo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://splitsquad.github.io/eum-manifest/
+    chart: eum-infra
+    targetRevision: 0.1.0
+    helm:
+      valueFiles: []
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: eum-infra
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
