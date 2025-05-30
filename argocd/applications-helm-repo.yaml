@@ -5,12 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://splitsquad.github.io/eum-manifest/
-    chart: eum-ai
-    targetRevision: 0.1.0
-    helm:
-      valueFiles: []
+  sources:
+    - repoURL: https://splitsquad.github.io/eum-manifest/
+      chart: eum-ai
+      targetRevision: 0.1.0
+      helm:
+        valueFiles:
+          - $values/charts/eum-ai/values.yaml
+    - repoURL: https://github.com/splitsquad/eum-manifest.git
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: eum-ai
@@ -28,12 +32,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://splitsquad.github.io/eum-manifest/
-    chart: eum-backend
-    targetRevision: 0.1.0
-    helm:
-      valueFiles: []
+  sources:
+    - repoURL: https://splitsquad.github.io/eum-manifest/
+      chart: eum-backend
+      targetRevision: 0.1.0
+      helm:
+        valueFiles:
+          - $values/charts/eum-backend/values.yaml
+    - repoURL: https://github.com/splitsquad/eum-manifest.git
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: eum-backend
@@ -42,7 +50,7 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true 
+      - CreateNamespace=true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -51,12 +59,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://splitsquad.github.io/eum-manifest/
-    chart: eum-infra
-    targetRevision: 0.1.0
-    helm:
-      valueFiles: []
+  sources:
+    - repoURL: https://splitsquad.github.io/eum-manifest/
+      chart: eum-infra
+      targetRevision: 0.1.0
+      helm:
+        valueFiles:
+          - $values/charts/eum-infra/values.yaml
+    - repoURL: https://github.com/splitsquad/eum-manifest.git
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: eum-infra
