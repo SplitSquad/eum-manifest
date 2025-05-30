@@ -168,7 +168,7 @@ services:
     name: information
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-information
-      tag: b58c79efbc205fe2023bfdfbfb24a0711d549152
+      tag: 31e253448feeb6ce397028a1aec96f59b8397cad
     port: 8080
     replicas: 1
     resources:
