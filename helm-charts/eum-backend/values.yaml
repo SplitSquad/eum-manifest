@@ -47,7 +47,7 @@ services:
     name: debate
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-debate
-      tag: c8a9ef08653448c6074e354daaa76fdef679c86c
+      tag: e18eb5d1701d9273b557b577f5e645e1c6128560
     port: 8083
     replicas: 1
     resources:
