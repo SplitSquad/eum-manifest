@@ -3,7 +3,7 @@ entries:
   eum-ai:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-05-30T13:06:37.1622895+09:00"
+    created: "2025-05-30T13:44:45.1139192+09:00"
     description: EUM AI Services Helm Chart
     digest: c11fbc3bbc24fb9163466855bf35971d7b6b4bf553891cc49911800e2129f779
     keywords:
@@ -26,7 +26,7 @@ entries:
   eum-backend:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-05-30T13:06:37.1640587+09:00"
+    created: "2025-05-30T13:44:45.1269843+09:00"
     description: EUM Backend Services Helm Chart
     digest: 4313d43932a7b713ae414b41899ddb570099afa076b9a34b751b4d4d5f6d917a
     keywords:
@@ -48,4 +48,26 @@ entries:
     urls:
     - https://splitsquad.github.io/eum-manifest/eum-backend-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-30T13:06:37.1604595+09:00"
+  eum-infra:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-05-30T13:44:45.1276119+09:00"
+    description: EUM Infrastructure Services Helm Chart
+    digest: 7e39c1db4da9916ca28e71b4069a35f847e28a2bae516aeda74d07bef83589cc
+    keywords:
+    - infrastructure
+    - redis
+    - kafka
+    - database
+    - messaging
+    maintainers:
+    - email: team@eum.com
+      name: SplitSquad Team
+    name: eum-infra
+    sources:
+    - https://github.com/SplitSquad/eum-packaging.git
+    type: application
+    urls:
+    - https://splitsquad.github.io/eum-manifest/eum-infra-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-05-30T13:44:45.0979982+09:00"

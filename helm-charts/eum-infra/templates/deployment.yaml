@@ -1,0 +1,64 @@
+{{- range $serviceName, $service := .Values.services }}
+{{- if $service.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $service.name }}
+  namespace: {{ $.Values.global.namespace }}
+  labels:
+    app: {{ $service.name }}
+    chart: {{ include "eum-infra.chart" $ }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+spec:
+  replicas: {{ $service.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $service.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ $service.name }}
+    spec:
+      containers:
+        - name: {{ $service.name }}
+          image: {{ $service.image.repository }}:{{ $service.image.tag }}
+          imagePullPolicy: {{ $service.image.pullPolicy }}
+          ports:
+            - containerPort: {{ $service.targetPort }}
+          resources:
+{{ toYaml $service.resources | indent 12 }}
+          {{- if $service.env }}
+          env:
+{{ toYaml $service.env | indent 12 }}
+          {{- end }}
+          {{- if $service.command }}
+          command:
+{{ toYaml $service.command | indent 12 }}
+          {{- end }}
+          {{- if $service.volumeMounts }}
+          volumeMounts:
+{{ toYaml $service.volumeMounts | indent 12 }}
+          {{- end }}
+      {{- if or $service.volumeMounts $service.persistence }}
+      volumes:
+      {{- if $service.persistence }}
+      - name: {{ $serviceName }}-data
+        {{- if $service.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ $service.name }}-pvc
+        {{- else }}
+        emptyDir: {}
+        {{- end }}
+      {{- end }}
+      {{- if $service.config }}
+      {{- if $service.config.enabled }}
+      - name: {{ $serviceName }}-config
+        configMap:
+          name: {{ $service.name }}-config
+      {{- end }}
+      {{- end }}
+      {{- end }}
+{{- end }}
+{{- end }}
