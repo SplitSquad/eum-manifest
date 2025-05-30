@@ -1,91 +1,49 @@
-# EUM Terraform 설정
+# EUM AWS EKS Infrastructure as Code
 
-## 📋 개요
+이 디렉토리는 EUM 프로젝트의 AWS EKS 인프라를 Terraform으로 관리합니다.
 
-기존 ArgoCD 애플리케이션들을 Terraform으로 관리하기 위한 설정입니다.
-
-## 🚀 실행 단계
-
-### 1. 사전 준비
-
-```powershell
-# kubectl 설정 확인
-kubectl config current-context
-kubectl get nodes
-
-# ArgoCD 애플리케이션 확인
-kubectl get applications -n argocd
-```
-
-### 2. Terraform 초기화
-
-```powershell
-cd terraform
-terraform init
-```
-
-### 3. Import 실행
-
-```powershell
-# 스크립트 실행
-../scripts/import-argocd-apps.ps1
-
-# 또는 수동으로 Import
-terraform import kubectl_manifest.eum_ai_application 'apiVersion=argoproj.io/v1alpha1,kind=Application,namespace=argocd,name=eum-ai'
-terraform import kubectl_manifest.eum_backend_application 'apiVersion=argoproj.io/v1alpha1,kind=Application,namespace=argocd,name=eum-backend'
-terraform import kubectl_manifest.eum_infra_application 'apiVersion=argoproj.io/v1alpha1,kind=Application,namespace=argocd,name=eum-infra'
-```
-
-### 4. 계획 확인
-
-```powershell
-terraform plan
-```
-
-### 5. 적용
-
-```powershell
-terraform apply
-```
-
-## 📁 파일 구조
+## 📁 구조
 
 ```
 terraform/
-├── providers.tf              # Provider 설정
-├── variables.tf              # 변수 정의
-├── argocd.tf                 # ArgoCD 설치 (선택사항)
-├── argocd-applications.tf    # ArgoCD 애플리케이션들
-└── README.md                 # 이 파일
+├── environments/           # 환경별 설정
+│   ├── dev/
+│   ├── staging/
+│   └── prod/
+├── modules/               # 재사용 가능한 Terraform 모듈
+│   ├── eks/              # EKS 클러스터 모듈
+│   ├── vpc/              # VPC 및 네트워킹 모듈
+│   ├── iam/              # IAM 역할 및 정책 모듈
+│   └── security-groups/  # 보안 그룹 모듈
+├── scripts/              # 헬퍼 스크립트
+└── shared/              # 공통 설정
 ```
 
-## 🔧 주요 명령어
+## 🚀 사용법
 
-```powershell
-# 상태 확인
-terraform state list
-terraform show
+### 초기 설정
+```bash
+# 특정 환경으로 이동
+cd environments/dev
 
-# 특정 리소스 상태 확인
-terraform state show kubectl_manifest.eum_ai_application
+# Terraform 초기화
+terraform init
 
-# 계획 저장 및 적용
-terraform plan -out=tfplan
-terraform apply tfplan
+# 계획 확인
+terraform plan -var-file="terraform.tfvars"
 
-# 리소스 제거 (주의!)
-terraform destroy
+# 적용
+terraform apply -var-file="terraform.tfvars"
 ```
 
-## 📝 참고사항
-
-1. **기존 ArgoCD는 건드리지 않음**: 현재 실행 중인 ArgoCD와 애플리케이션들은 그대로 유지됩니다.
-2. **Import만 수행**: 기존 리소스를 Terraform 상태로만 가져옵니다.
-3. **GitOps 유지**: Helm 차트는 그대로 사용하고, ArgoCD가 계속 동기화합니다.
-4. **점진적 전환**: 필요에 따라 개별 애플리케이션을 Terraform으로 관리할 수 있습니다.
+### 환경별 배포
+- **dev**: 개발 환경 (작은 리소스, 실험용)
+- **staging**: 스테이징 환경 (프로덕션과 유사한 설정)
+- **prod**: 프로덕션 환경 (HA, 보안 강화)
 
 ## ⚠️ 주의사항
 
-- `terraform destroy`는 모든 애플리케이션을 삭제하므로 주의하세요.
-- Import 전에 반드시 백업을 확인하세요.
-- 상태 파일(`terraform.tfstate`)은 중요하므로 안전하게 보관하세요. 
+1. **백엔드 상태 관리**: S3 + DynamoDB 사용
+2. **IAM 권한**: 최소 권한 원칙 적용
+3. **네트워크 보안**: Private 서브넷에 워커 노드 배치
+4. **버전 관리**: 특정 버전 고정으로 일관성 유지 
