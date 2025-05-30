@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: eum-ai-helm-repo
+  name: eum-ai-helm
   namespace: argocd
 spec:
   project: default
@@ -24,7 +24,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: eum-backend-helm-repo
+  name: eum-backend-helm
   namespace: argocd
 spec:
   project: default
@@ -47,7 +47,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: eum-infra-helm-repo
+  name: eum-infra-helm
   namespace: argocd
 spec:
   project: default
