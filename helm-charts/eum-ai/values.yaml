@@ -130,7 +130,7 @@ services:
     name: chatbot
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-chatbot
-      tag: a42d4197a3e0e63e25ca4eceeb9b71ce6f42db7d
+      tag: 27ab39edd519f9b96781e7bf174b269c147bcc56
     port: 8000
     replicas: 1
     resources:
