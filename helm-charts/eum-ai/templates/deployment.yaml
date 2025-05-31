@@ -21,11 +21,19 @@ spec:
       labels:
         app: {{ $service.name }}
     spec:
+{{- if $service.securityContext }}
+      securityContext:
+{{ toYaml $service.securityContext | indent 8 }}
+{{- end }}
       containers:
         - name: {{ $service.name }}
           image: {{ $service.image.repository }}:{{ $service.image.tag }}
           ports:
             - containerPort: {{ $service.port }}
+{{- if $service.containerSecurityContext }}
+          securityContext:
+{{ toYaml $service.containerSecurityContext | indent 12 }}
+{{- end }}
           resources:
 {{ toYaml $service.resources | indent 12 }}
           env:
@@ -47,12 +55,12 @@ spec:
                   key: {{ $key }}
 {{- end }}
 {{- end }}
-          volumeMounts:
 {{- if $service.volumeMounts }}
+          volumeMounts:
 {{ toYaml $service.volumeMounts | indent 12 }}
 {{- end }}
-      volumes:
 {{- if $service.volumes }}
+      volumes:
 {{ toYaml $service.volumes | indent 8 }}
 {{- end }}
 {{- end }}

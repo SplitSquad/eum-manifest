@@ -89,13 +89,41 @@ services:
       tag: 5be22f91c196009365089aefe437915a11adbdfb
     port: 8000
     replicas: 1
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: false
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
     resources:
       requests:
-        memory: "512Mi"
-        cpu: "250m"
+        memory: "1Gi"
+        cpu: "500m"
       limits:
-        memory: "4Gi"
-        cpu: "1000m"
+        memory: "6Gi"
+        cpu: "2000m"
+    volumeMounts:
+      - name: tmp-volume
+        mountPath: /tmp
+      - name: dev-shm
+        mountPath: /dev/shm
+    volumes:
+      - name: tmp-volume
+        emptyDir: {}
+      - name: dev-shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 2Gi
     config:
       EUREKA_APP_NAME: "agentic"
       EUREKA_PORT: "8000"
@@ -117,6 +145,7 @@ services:
       GROQ_HIGHPERFORMANCE_MODEL: "gemma2-9b-it"
       S3_REGION: "ap-northeast-2"
       S3_BUCKET_NAME: "eum-msa-bucket"
+      PYTHONPATH: "${PYTHONPATH}:."
     secrets:
       GOOGLE_API_KEY: "AgC3v9777wZkaIZ2+Ngm9HsGzxsUyzxouaXOKN2A2+Gl1Hg7nsQ9TY//WNbJbwbE1yLZr7YiPhZMt78nkOZOCcJXYF+ACtGqgoBttL7j+x5VmzzE8j4XlaXQ82iSqqGjy0iSlZAI/f9J0nSUnKSBUwxVTrCmKuHfei4RxzqhVjtYdqVLuOK765iG3czKya9G/BJSDJhEcpbPdeoWVJQYjv/ApFjEFNIuvyOGVRTkE+1BaSqvtNUPLdCmFa90UguY7mUJpskpaDe/9HEwnm2vyRCzZr1EhlPIyYhsLw0xYYMQX2LepPKtTxs7Wj/cjQWDau6F3CJRnHRsMVoa+YoFxl3YE6KFLJOuQt93ZrbXmBW7TPNcWnErWhit3hDckKIaj8FWkghr6BpVdqnzczCrC+3tXL4JxomdYQqbQ3FGEprqtZaqSGSZQTZIinwDp24QxN+WQZ/cR7YH48TxXkGxuKXF10MILdugaIce05PH5Z62OlP7LzLQ+y6EsIYP0nVbA1xqRbFL8iWcBqvc2vrPU90oLs5zv2/hysB4HY1lLdsKRujkRkf7TqdDKX9tJeRW2cUbg06HyflSruefwaa5rBJmAO0Rb13A6B7UQWhTYlWF89sEghEEOOyqLhHzzl4N4et7UkDxsRHFIx51COGilxmhhNq+ITjxOiYPH00CZiorkHqJTeHZzZ5PGBHnywupBeH5FP9vK9xfmdRphOpJ3tIREw=="
       GROQ_API_KEY: "AgCbS4KJ385mDAxQcGQn/ztb7e4a+gpItdBE2LIsXHSyw4YV16Y45aQewPihGflqOh33JTwf2Pfc9vHOd3fn1JBjw/7u6wov0JlHsHJb182lWmhaLKdFA13BPqFqsL8VHGxlVSKIb7AYCcJDgAj+Sm1GpR1x33qFsOfhWRvFpwuaOL4/+aENsWtxZsa1Gn/A7YFXnTSLiGqVSkfXZ7kRwmqeqHp/HmxqSamCzTpnoP1o04q3OQ/JWAL7kHv36VL+7tytWZJ0THbkDbTll9iUUWAVAuBOkEfwhpONHcTQ+yQHaLptMvjFyG7R5k+pkOcXal6C5RrfNXvQrcxzfs5/EIXfkbehgso01UymC+ExOlei6ToXgMJW0S1DWUSJJipQPZNFXXQRWwOCWlSpQ9ZzJkbGpmQezN0s75nWgiV1dsh4V0wpijykL6ZDl+e3PViYTsdD+RC6aYal7H7UmjHuqncy2Y1eIy8D72Dznye/Nv9iXnp3Edwi4oFNy95ZpaebOlbgPZVr4RKjSdBS8rNGd+sxMDlIuDvtynzLa0yEqYGdir8JCX70jcenuZ9+Rm8RKCNHrzQm/YYQEiVol+JJWj9k4maOoOV+YZZ1X1cXZ7lL/Xk0GTtG+nde0Q6kBVC1QxDaxeMI7ckQm3LWRieOK4N9eerXWfGICXkBitXThNdXDTTkEA5lM5hbxaQZ1xsGG1iNOjGNQdHUM+brI/8/SZTRZ+kRFb+gCmlMwoWoyx44VAUnO7C9DbfVH8bylqoSh8EPtFHpKqGkWA=="
