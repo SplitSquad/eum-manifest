@@ -2,9 +2,11 @@
 
 > **EUM 프로젝트의 Kubernetes 매니페스트 저장소**
 
+
 ## 📋 프로젝트 개요
 
 **EUM-Manifest**는 EUM 플랫폼의 모든 Kubernetes 리소스를 GitOps 방식으로 관리하는 매니페스트 저장소입니다. ArgoCD와 Helm을 활용하여 안전하고 효율적인 배포 파이프라인을 구축했습니다.
+
 
 ## 🏗️ 아키텍처
 
@@ -19,6 +21,14 @@ eum-manifest/
 │   └── 📁 eum-infra/               # 인프라 서비스 (Redis, Kafka, DB)
 └── 📄 .gitignore                   # 보안 파일 제외 설정
 ```
+
+### Ops 아키텍처
+![Ops 아키텍처](https://github.com/user-attachments/assets/9ba47981-fb42-48ad-a552-8b9da5e6be36)
+
+### Infra 아키텍처
+![infra 아키텍처](https://github.com/user-attachments/assets/585d54b1-eb04-448b-8858-0bc699fb49b2)
+
+
 
 ## 🔧 주요 구성 요소
 
@@ -41,6 +51,7 @@ eum-manifest/
 - **Redis**: 캐싱 및 세션 관리
 - **Kafka**: 메시지 큐 및 이벤트 스트리밍
 - **Database**: PostgreSQL 기반 데이터 저장소
+
 
 ## 🔒 보안 강화
 
@@ -69,6 +80,7 @@ spec:
     password: AgBy3i4OJSWK+PiTySYZZA9rO43cGDEQAx...
 ```
 
+
 ## 🚀 GitOps 배포 파이프라인
 
 ### ArgoCD 기반 자동 배포
@@ -85,6 +97,7 @@ graph LR
 - **자가 치유**: `selfHeal: true`로 설정
 - **리소스 정리**: `prune: true`로 불필요한 리소스 자동 제거
 
+
 ## 📊 모니터링 및 관리
 
 ### Helm Charts 관리
@@ -99,6 +112,7 @@ eum-ai/*/secret.yaml
 eum-backend/*/secret.yaml
 backup-*.yaml
 ```
+
 
 ## 🎯 주요 특징
 
