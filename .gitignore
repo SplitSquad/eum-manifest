@@ -17,4 +17,4 @@ backup-eum-ai.yaml
 backup-eum-backend.yaml
 
 #argo-cd
-argocd\applications-helm.yaml
+argocd/applications-helm.yaml
