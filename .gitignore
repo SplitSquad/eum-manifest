@@ -15,3 +15,6 @@ eum-backend/log/secret.yaml
 
 backup-eum-ai.yaml
 backup-eum-backend.yaml
+
+#argo-cd
+argocd\applications-helm.yaml
