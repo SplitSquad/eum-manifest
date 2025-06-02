@@ -12,7 +12,7 @@ services:
     name: discussion-room
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-debate-room
-      tag: 78101c45ff7a6bbdce648fc0ffbfa1f47980f11e
+      tag: 779b7ca05eee9c5ea9de5708bb57512a50a81a62
     port: 8000
     replicas: 1
     resources:
