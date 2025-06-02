@@ -77,7 +77,7 @@ services:
     name: community
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-community
-      tag: b343b959c0e542fa8890205725bacbd0d4bfff5e
+      tag: b04d50b0e0c7b7ccdf0cd6002be2f9ab8c4ba866
     port: 8082
     replicas: 1
     resources:
