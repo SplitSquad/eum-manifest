@@ -86,7 +86,7 @@ services:
     name: agentic
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-agentic
-      tag: 9606b2f4aa672b7141b2c4dc0a1e1ea0bf11653c
+      tag: af9924633d0c971ebc2ced3d65aa465b697614c8
     port: 8000
     replicas: 2
     securityContext:
