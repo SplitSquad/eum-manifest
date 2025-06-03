@@ -14,7 +14,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-user
       tag: f8e1e815d74b049d6f09c33b481191478c596104
     port: 8081
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
@@ -49,7 +49,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-debate
       tag: 52ef5147a3731ac2d8b27f207cc0378fa027b389
     port: 8083
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
@@ -79,7 +79,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-community
       tag: b04d50b0e0c7b7ccdf0cd6002be2f9ab8c4ba866
     port: 8082
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
@@ -113,7 +113,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-alarm
       tag: 2177be75fce106ad409d626c032593bb96518ae2
     port: 8082
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
@@ -138,7 +138,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-api-gateway
       tag: 245173ef6099d006d956fdd13d3c0c25a9f6bc34
     port: 8080
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
@@ -170,7 +170,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-information
       tag: 31e253448feeb6ce397028a1aec96f59b8397cad
     port: 8080
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
@@ -205,7 +205,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-log
       tag: 8a9e8aabdbc8e8b76301cda8c81c78e5a041f572
     port: 8085
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
@@ -228,7 +228,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-eureka-server
       tag: c521d0340add1fc9d6c9342796203fb9e8fb9c8b
     port: 8761
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "256Mi"
