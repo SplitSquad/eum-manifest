@@ -228,7 +228,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-eureka-server
       tag: c521d0340add1fc9d6c9342796203fb9e8fb9c8b
     port: 8761
-    replicas: 2
+    replicas: 1
     resources:
       requests:
         memory: "256Mi"
