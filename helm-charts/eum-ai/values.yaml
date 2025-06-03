@@ -60,7 +60,7 @@ services:
     name: classifier
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-classifier
-      tag: c5d12b6a06a2a54b27f06f3f609ecb5e6a8547ea
+      tag: 593112f424fdfd425cccf913a19e42ec72355fb9
     port: 8000
     replicas: 2
     resources:
