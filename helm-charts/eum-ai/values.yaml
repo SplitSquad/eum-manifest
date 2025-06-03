@@ -62,7 +62,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-classifier
       tag: c5d12b6a06a2a54b27f06f3f609ecb5e6a8547ea
     port: 8000
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "512Mi"
@@ -88,7 +88,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-agentic
       tag: d82aebdb4476cc459d9f83e3e36c9356c334a7b3
     port: 8000
-    replicas: 1
+    replicas: 2
     securityContext:
       runAsNonRoot: true
       runAsUser: 1000
@@ -155,7 +155,7 @@ services:
       GOOGLE_SEARCH_ENGINE_ID: "AgAHaOC9yl0BFdPRkXs21AAZK2y0oulZ1l3YtKgkF24c/2gnn7qRWORk0cuErD4rHJZnwqd5BY76P+AfuDvbeOAAT3EMmvA5M4dmuQvozZn0F8hUBnRaRxj56a7CDmZdabSVheeebm5LSaYvrVF+jVJDmg9cy08q17/asO5ScGltrC4D667ZcJHs+rlNV/b6thCw3Xoj5DI5v7qxTkYzMY5a/OcTR2VTbgzD0G83tGhOTGv0t1lrnQfLVUgpOi2uF+Xyj7AhbphiyJcJmqGRHzjVx7+NcRgZOjxpiAB1PQUbJFJZBLpzQIJU2TTQrG0FNGaNihOXCVVqCrsz78AE++gc/9y1O2hvuGyg9APo94virFpANLCFXKiYbUvAYBpwtga31IgthNh6uog9EomQ1hRSw9vo65U594W1nj0lM5fvBJ6qLR7MNtTWZXeKSfC7Y7us+r161VT+zFpSOtRF1y8m24/L0QxbxmxbrMRawQVVdyQ9tQTPLwxIrhbKMov/rMvvVVMVtrPTV3y8OBld8PTeyJyd+tpZfIo4aGCR4K2miwqOREEqGZgtxJmt9vxOU5pYPOt9ao13rjFlTWE9vjc0A4tRSHLwZnIB9AVjvLaYulCnYgIHgn5kFCPnFhM0ZCnMVuDUwUcIKB2QmLCtwNB8yBsTOv8s67LtGByDTNzmOB+oL+bW3/SpnDK4JmqBbqrwB+dkMl+f3yCUmTxO6rUBlg=="
       GOOGLE_SEARCH_EVENT_API_KEY: "AgAgAueK76l1EMIuLvD2sKIPxfqwK4ZvFwDj/3VmL6D7b9gwxvHS2XqlU7rP5pNkab4L1++hSrgBVhWuHuX7oCv5sXRLMMXL3g/oeGs/F3tv+vFlpF4jwDIG7j1ZjTiQNxqSrN5dfPTANanilMhJD/7dmDnlOzfx8wQyZFHE7OM/YHtVICoTAGTa3oaIO2HLwi41hoZ4Hv2df8tuJbrB+vlqc8GUO1egLgHUCQLrhjpnS8STtPT+QDy9PG3A5neXq7Y/iRFZB+0wSc/vxRxULV5P3CiwByQjdqq2tRsIIs9rxdo765Ef25CBg0K1zSVvPwW/+8783UTeaJd2pNiRenVYEg6qSfNHdWGtb8BOWZWBC+xPexae0/bcGSgot3Nhs3YWF/HsTCet+Gyhrgfos1S7ze1bi7heEHTi8QuL/LrLAhJg87lo1Qig+pjwzVruMpHySS7jqhWcGpi4AHkLG6E1I361spceWO3t4dZ0dVGZ+DRqzKhI8q6Sbk/pkwBS+Pl3wt5jE6gcdx8AYZv/NORlknxhGguP+ZKl4bYB+VfbeG24m7pmihLEp3PIJ+/IBipUVBlwiVVAob60VWDUvl7IHg6Bc+OQ9DAkI85zwi/7/Be78bLpOwzulZuaaQarqnsBphXjjTd6VJMqGemscAUZ/wToo71lQhA0XnCQcBuPt5Cnm+LmM6rk2VyH18J2/k/UirEivIR7QnDha05r2qeixKIiSurGffN7OUGBD+Y4mBFqU0K3U2s="
       GOOGLE_SEARCH_WEATHER_API_KEY: "AgAt7m67c2p5DcPWSohakaRPMHMrTr7MU9JwVPcDSX+98pPdjW4sHg3Q8q0mX5oxCNKjaMC5Foz1+/97oCBwoRG2VQA1YAEv5Q1jqADtBtJWZYZZvAknhVgOX0jeDbn4AvcMb03Wc7wzbDMmyuF3ep0RqTJq/7TkfFpW+L/pCxd5j0MJVbqfVTJQYFw9lFEJrJ098L/Ty1+2E5E5e7XRdrPE8Z+E4YnIhxIThr9C6m0Bz4ktvKiQP/YNph43AbFpfOaLRVzpcX5Uv01E8ewSH934L2jZaZuON3uLUFRMQs+BWfyCcZcHNge3t6PLGStzQzCEf1ppQ4Ia+oLYcU/3/UMbm5w+HroMm2Hga7TH5zHL9bXp9F5W+fSP4SQzGLxO/QA9BL1W4r11N3ApkT/y4/kk2LNYyxfAVICzjtuycCWHWkqh8jkCcV9kpUMnF61Mx4XdfdFGUIRy33+WsG+8gCtXJa7cWq+26eb0uzIFqE1+T2Pta+elAEzhSZ3tiT+MSodZFYh08evDyeS2JPrR+6yQxPLElw2V1BZcmNRJZSoltRzBTpTA7UN9i/YiUQex7VqkoONGxb7kvflaSAgS5oRiJce1nhmsoFsIVpip5KCTmK3GLWhWJ71L9+Kr4Vyga5n6p7X/q7yOMMbo4EUUUHtWKKMDwWpdjdRpqWCfO1JsicMi0pOc9pw1WzyjhmrxTGANfNpoD1VzDRPGZMgTm9N+vTjOIbgIP5fldFfRm4a6Of0p/M7LgXo="
-      GOOGLE_SERACH_API_KEY: "AgCVW+emJx+E7/lfn61yvmVm2Wt5dCsRe3CKoiCiP2uydDmuZDjsiUrR1e7wD8UFoZ1cP6532B0Mgcndrn/7NfIk5tKfgwIN+ROhxiCvWkX3zcaA2fEHMF2dFrhECSgb6oF5duaFZwQPYN3yVGTpv2QmGzT1uzCFB99oFKfMRI1VRqmeEIKf7j0yZ3zT2KVjFz6wDpYc3XQNebK33OE4gCas+tX+s2p84w0BRiRo7gEtP2dMr1nywld+DHm+ciHtHiAC1c76Wz0Uqakmi6hrGeKRGhunLol1ZLLkX60RUXfIs2Q1wXdaXXuUCDBDXqYd8rjZSs6LSvTu4u4z22z6D7QDucESNRV5oL6rl3XEO7T/ek2YIqozU6lQuN3GlGcIsD+u7ZRapqHNbTaMO6UdimX0nk7qY3RiaeIYK+KlbCRAKLWvbV0Ah+N3Swggc81/L9dfWCPRUXTXiwYZY1BvwNDyWhnXacTMvZ7xto/3IEuyks5DJdXSF+yM6VXtM0J1FGs4ag6e77m8F4qRfZWLsMEBm9SfAZHV48fyq9399eOZ3oCxZ+TgYg3FgrWYJXRqzepzoAoxedP5ErD9ogRuD/lx06S2dEjBlor2UGyBHmiSLkpVgtcsBrCs/kb6EYJi7CguImYKgK7Nq6IBCUJxD91lZmWI5sdj8XbByixF1HCjjei7ZycvzPFqEFAHJ/IQnp6VBjA/5OtlSiT4Hl6CwRzUZ86iWlvwSsL1YXJkItPKp3hgi6uhERs="
+      GOOGLE_SEARCH_API_KEY: "AgCVW+emJx+E7/lfn61yvmVm2Wt5dCsRe3CKoiCiP2uydDmuZDjsiUrR1e7wD8UFoZ1cP6532B0Mgcndrn/7NfIk5tKfgwIN+ROhxiCvWkX3zcaA2fEHMF2dFrhECSgb6oF5duaFZwQPYN3yVGTpv2QmGzT1uzCFB99oFKfMRI1VRqmeEIKf7j0yZ3zT2KVjFz6wDpYc3XQNebK33OE4gCas+tX+s2p84w0BRiRo7gEtP2dMr1nywld+DHm+ciHtHiAC1c76Wz0Uqakmi6hrGeKRGhunLol1ZLLkX60RUXfIs2Q1wXdaXXuUCDBDXqYd8rjZSs6LSvTu4u4z22z6D7QDucESNRV5oL6rl3XEO7T/ek2YIqozU6lQuN3GlGcIsD+u7ZRapqHNbTaMO6UdimX0nk7qY3RiaeIYK+KlbCRAKLWvbV0Ah+N3Swggc81/L9dfWCPRUXTXiwYZY1BvwNDyWhnXacTMvZ7xto/3IEuyks5DJdXSF+yM6VXtM0J1FGs4ag6e77m8F4qRfZWLsMEBm9SfAZHV48fyq9399eOZ3oCxZ+TgYg3FgrWYJXRqzepzoAoxedP5ErD9ogRuD/lx06S2dEjBlor2UGyBHmiSLkpVgtcsBrCs/kb6EYJi7CguImYKgK7Nq6IBCUJxD91lZmWI5sdj8XbByixF1HCjjei7ZycvzPFqEFAHJ/IQnp6VBjA/5OtlSiT4Hl6CwRzUZ86iWlvwSsL1YXJkItPKp3hgi6uhERs="
   chatbot:
     enabled: true
     name: chatbot
@@ -163,7 +163,7 @@ services:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-chatbot
       tag: 27ab39edd519f9b96781e7bf174b269c147bcc56
     port: 8000
-    replicas: 1
+    replicas: 2
     resources:
       requests:
         memory: "512Mi"
