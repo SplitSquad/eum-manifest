@@ -203,7 +203,7 @@ services:
     name: log
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-log
-      tag: 8a9e8aabdbc8e8b76301cda8c81c78e5a041f572
+      tag: 2f76a81c149783be58c33b540d3f00725b2dca0d
     port: 8085
     replicas: 2
     resources:
