@@ -86,7 +86,7 @@ services:
     name: agentic
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-agentic
-      tag: d82aebdb4476cc459d9f83e3e36c9356c334a7b3
+      tag: 9606b2f4aa672b7141b2c4dc0a1e1ea0bf11653c
     port: 8000
     replicas: 2
     securityContext:
@@ -161,7 +161,7 @@ services:
     name: chatbot
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-chatbot
-      tag: 27ab39edd519f9b96781e7bf174b269c147bcc56
+      tag: e2a092bc1e6a97def193ce8beeacd4db0d4efcf6
     port: 8000
     replicas: 2
     resources:
