@@ -12,7 +12,7 @@ services:
     name: user
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-user
-      tag: 83380cf62eed225e8aebcd267ca44e37294dc6b3
+      tag: f8e1e815d74b049d6f09c33b481191478c596104
     port: 8081
     replicas: 1
     resources:
@@ -28,7 +28,7 @@ services:
       db-url: "jdbc:mysql://eum-back.cbuqoagm4dq9.ap-northeast-2.rds.amazonaws.com:3306/user"
       eureka-ip: "http://discovery.eum-backend.svc.cluster.local:8761/eureka"
       kafka-url: "kafka.eum-infra.svc.cluster.local:9092"
-      google-uri: "http://localhost:3000/auth/callback"
+      google-uri: "https://eum-friends.com/auth/callback"
       redis-url: "redis.eum-infra.svc.cluster.local"
       s3-region: "ap-northeast-2"
       s3-bucket-name: "eum-msa-bucket"
@@ -47,7 +47,7 @@ services:
     name: debate
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-debate
-      tag: c8a9ef08653448c6074e354daaa76fdef679c86c
+      tag: 52ef5147a3731ac2d8b27f207cc0378fa027b389
     port: 8083
     replicas: 1
     resources:
@@ -71,13 +71,13 @@ services:
       db-password: "AgAlzQ9+NdSQCz6k9Jn5qa/UZUymUCcQOz0JeRuP52IN8SsTkYH0r6tITgFOuwzHqVVHKe+ZF4p8yydJ59OdD5esOYaZnp1k7nyx1qFxXAXrmn99FuOq9DWVCCrNSMubfJy5NrWM6g8CgTOe0hZqvb85npPh6X0p6hIXMml9rFp2P2dfFM7tbCTwDqQnX4Y5ntQNiZxBtiFYPL6/JAfZQ09ZrG3qOU6W5pOu0s4BwjvKF9KtszTowYU3Hw067GxO5ARq/tLYPU4LW3vYxczRTscxFnd1fw65uzFwNk71IOhZQ3SQ7VPL/brukEsmGVAcNKmtboXK0RK65lu8OH6NsMUjC+pz/cdL5UipN9/wkX9veFFLq53HmO3pXNPEO3CUKTCkhuFReOfyui3kWhxNtfOuwmlwcF+EifD8uiwGNPnipIWAPpn/B9RXj4bkSMCJLvRj6xxn53KCd6dNd2BFg63KWvJpEdyWQJMw7Q5kGVfgFlSzYFam9GEWe/K5tfqf5MjlqnuCcGupoMc+MYAxofd63RWw2bllXHSz5+x6u5GFhA8EL49vLOnrKuhtwYYLswnpfY/15NjNlJkVjjNse6HVuwre9e34booxMn8Gg2rUhT64ZvXY/jDJEd9bNG4MpT4wRw2JnJVKbHeRWifhSPdbuiWHKetFvoJzHLuoHZS8Zp6GiUoCQZJ27fRSLZRPsw3krOVWSJPGea90/aLZLw=="
       db-user: "AgASa7s4GKqy3x5E1S9jrGPuNxwHEXB+UwIMvZBvOfJ8XqDx00f7xyeVr+YUm+7RMaXg9IxU7g1wIMhbsUlIy5Xy8xhkqJ/eG84Onlb8N0T0aCGXQgVGUq5xSubZwLIScsJy14NIVUDGaF4pk+CwsYkNe3SW72pZzSQzeLGe6mcmueVhQU09p/Cd44vM3hSJWsmcYUVuiOzBIYNhIxXd0IktG9KRsxM+CWa2nqvQK7jmYfI6JzT6L36MjWXlN3LRSNLKGcWbGMuH7lc84hyk2IYd3a6vgTCXGO7nLM3YEgM9+tloR5On3Yy+xc3dgO0Chk4rQ/tbsCl+bDUNuuwkXNnsMIA/NEBpsAQOMWn46sL3H40RDZBT59A+tFsrYfNPmhv0XcK2QwuZ4JT8bX8DaYme7+KSzoIOLDhl5RTh2juk3ffVFL/TSoSMjrEhotyuCdE5ZMdUnFMEu2SIgJrc3Hk2813hu423X+J0yDzWhr1GxMxmtS4lr7xgpUlDvbLzEu5UgK708WQBKmKwRfz/vT7FO77lEppMpFAEGO4qbAOwztG87cHMl0W2A5qJP3shp5iyyeRcaXQe9Feny8OB36v7PWaQHctx9EhrY+eLmaBGb2Ppf/3ejJ2CWSaNLdIFhLP2YbMpsyWknMuFvQv2VLW7cFWoWOtliK3HXr4qrHDszLY1XlAPdaejR4LUKxAcAZR6LVXlDg=="
       jwt-secret: "AgCJojpvGobPcd5rkrQ96XLtoXqJxjdCM6i3wRfUi73SqfQNufzM/XbGquGf6UBEqw+/hi6R+OvLfM6x4q9NTBc2KTAnNimfalotleRV0wFAZ/oE87OcXo/SYWUfnHX8GysiGAmkY7+fS2yY0iUc+vuWmceTn4SKWxDa4MKYNgyluBXJu7Zxyy5tirhjxeHvji0xPTw/8Dnkqy4THEoZdc1PkBBjckkwwmZr2/xhaOX7qBoVsKlR4udylrukGZZX1Kg4ckdVWXWZeIUYKixsnlcW7qgw1riLWRNZ3SUT/A9nPT20Y59+srmQyGMXpm0Uz35F04FEJuLGksxRMt1GZFkc6xoX3bOAuDh+4L3GEcVNhjy8Ugrik/h9Zj+X5I/YB/yNo/EoeCNz4l95ElCAb0sqiiJsBX7yto+dE6CNvHCggGLZ4ACCPxVI/r8nL7cYP7iumzCiXTC4QQlaMbyJ8RqRCeqrdPbmn2iOkkmxQmE5ZsWE1iIqjbfn4ipZnvNGiyTl6sR3U8nzw1xGCmcMzHVMhZG7OuZWQnzUEwQfGGGsd5DJbPbqn3VHR81BoS5t867G4ZG6r9HQnfbWZrhU44hd/virsv+sXR+ogx/Xrsw1BbFw54P4LiZu4ItfAhlWrD2kfkgnMj+TEDNnIra1suWEQ5FwhrPTEVXzNlocYtqVrwWkCMv08WjVnIDHt3U+0G3H1O4U10G9Sp0PUbN4fdR+0eIPhqyZ4Uc3sVnTKj4SbFhY8GIctoHZu/MEVr3CLvk="
-      translation-key: "AgAlq/MWlpLJF9VsHfdYle6NVE0Mf8N7wU4lp09W4XkPY59Ca/zH23L2oDz3CrYyKyQsfat1m1Z4YGT9MYWcZ0mAoTlwp+BI8IM1+bFzengyyE3jIzWEOYS/TCzQaCvPgC3/h2riqTj7GDLAOPVjGQ3MGp8FVu3TXfQ17ZrJ/0+tOD1NKsbPKuSZHB8RDMnaYlMXVHCT9wH/LG5IfztTi6qrkLQ2afkcCjeQddYQb2L1ZEM7V3RRVIXP8BF3cH+O+Q5AWEKdq0klc49M54NK8ArcsELAyJCpg0MColQgtw9rft002vgr++XQKFynGNi6wmIZUnEuXZ43qqSEtPDoeyOUXHoFNdVzOVXlZx+f/Ah+UDGGWyTzZ+H+vAPtjEWRyoz0ljfpdoJmfUTxUGSbMub7Yzj364knvFG/eH75GN30upULGA+HSU/qLKG9uCH3XBOZLUoimgQamKlLt5XS+dBO6EQSIjXTRJ/50ijiIvDUrJ6JOx2s93eIXQderhZiQ1L/zNSS3VbcFIA6+XB+Mx5Thm5TuZ9s/moR8RSr7ZnrddQm4WnbGMOUNDmayC+dpgD0lYV/AzgbyEL+JmEbFsHdFsjyi0fs3euWACZvkMtw9LeT7OU0JeEyU/wUVtkuwDOLzDQjywRpIltVQ0kLnlxsREn3jpvmKH/AZCW5v8Cls4kgIbZAN6VRnMFE+iQlCoA1EeiacMSTbdvYZXH3Xu+Tor5EOLmA9S9SIYvfd0j/TlvVw024k6M="
+      translation-key: "AgDN0g3C27i5PmhUQKg8n89R6MnDz6FU4agb5ln3z6VOu+D7YTpav9zXdZI4uhOndTqbowondQyEZveNtTfbUwpk1mJt5KjQkcwhS1SJcg+LKGHIjgQ183XvKrGB6B00S5Fc3Sz1vOwPkCcp3neMb0V9YXBe1z3of19afU8hJGNTOuGUUVEi7/5fg3ffp686j2RP8Hzxm89TW0YnX+8VG9+pZjXWI9bjic1bkEO6c6cxytZbQPJKJy5/RLZRxDWzYVxtaKsWwX2AOfcx2g30nmREaCHnEyBwbQHxx1l7uxd15/UMotFOTJpzn6w6Q0YaeBJlWbj+ZC5WYALikKKukLq4pKdqXiS/VQqtWAZUGdWs6oWTsJb38TueVhjrfPNbgjfIzCPqyco/lCtyC6oGXwwilCiIb4ji7chfNlDlJ4TV26A5w2MkbHu2ynQLLmlOCcBib9jumEdqpDQveYYAwpmoMJMzMkk/P7ijJV7ykLUGYvYdj8pd/a6AlG9BP3e3HOpomLVkl+Zb9rJEvkJwx/8UsT8UyvsgO8oFLpB7YbjxMsflLjF0pjMTEWWyD+ClayqOaFhbSJ0JtChNyMqTokSp8+lld6p+nf/KM1oed4yIQjjYbzuSGYFuKNTOns9c2S5/4eIaUE0j7SPMNLeZas5glGtEkYmrz8jddr/tCP6L3O6vY2qA7s5izpX+VgQqXHQusadK4y7VBE3gkw1Gt96DjoIJCsDdRtMJ2QM9evVW2K6lr7hLTCc="
   community:
     enabled: true
     name: community
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-community
-      tag: 66e90cff9d5035bba038a91777637cdda966aa40
+      tag: b04d50b0e0c7b7ccdf0cd6002be2f9ab8c4ba866
     port: 8082
     replicas: 1
     resources:
@@ -105,13 +105,13 @@ services:
       db-password: "AgBAxrUj5mm70diXYDL81/aCNSWGZZOkHbq53kFvt9YCTorRUwAo5DBgYC4kW6EGjsBGwJCkd5c9hNyb4V1SAZ78bu2/iqxgpLF6OPzHNK/09DoSExIFJzvEkUroqIAH/xHrEnu/ehhcxfMMjb7PeewB+5DWQkg1e5oXFw7tFyzYY1KFg66SolhU5m9zFU4qFB4Fw32chsmHhvlnmRtbK6O+GyOypl8jeMRPHHVLUbbUrH1xSApcyxLRopV45pCQzp9Zh9LpOqzCGpPdl5pf3ML878ucTCdjCBuazDpiqxEE0Wdm9mAeD9Bi5C3/6lhSOftj+L1er/qQcpv/L3kgRWgEwR1+4CIvVhceZkHlLYldHr3N5AZiBDozkAmxyxYUPE6wKRg0yd7bgXk8/kK4+ihr0dmzqW/1BdIIkn74YGh1Qw4SttoGo8Opn4xbPPyMUMR7Y7C/6PZP4yCIC/ZJWWhP3dRm5Z6w3DW92Vs07lLN1GqvlyaDeN06QiBwWqQnKJfI4muT5m95lqbPfwTgvE5V9qHkjHSxCobD/qo2w7AQMI+FOJo0s5n9GkWwQrVgScQLNlOXF5nriu/fI9uU+bDsJiP4672igoOjzDuS0vQ7yMik8hxEnbNvYwH+6dH48cipRXya8MXUqB0/a0RD0vVZbhp8X1pOpBExmZ296DMQjXG0at5SQjBm/YMm6Ea3rJ3MXUqmWblzEpD+o2RZ/Q=="
       db-user: "AgC+pNePhA2lFQ8RnHgwNrWHkS8SrlAd1wTx+7uRX2pql4X/ydrM2L9jEW5c9IbCqVTQ+M/y9HpojtQYYvn3RsJR4zeib6Ur93KaE15EvBgv2ioChk/DpSUMk3a9ATmNNCPyVYctPfzsa+LWfFP7VDob7Sx/qNSzviwtFituz5/t76ZfXxfbb5QiDhC7tlZsn8tqwcUMT1XdJ+oYw3JL7sx5uYoeKBj4RAk8JqeNUXMgFXoVHqZeI0kG2l1XhMLrjev9uSpiLI+0r/fxPHzb/F0KhL9/Knc41EDmqlvAf4mmyPVwFO/ntotNFV1oc+D50mo2cJle4Y89KOsWN5zsHza9dbMEU/sXC43+ea35xSsjOHMcjCiobU0uWL/BMZlSdJ4RDM/5zg0R9mXv7nKZE+E1MzjxVGA7eaAkdH3rVuOHtvpKvsWzt6lTcSzTdegU+I06Fk8byyNNyPaSvf4hIRZBW1xVHFI1EnN/ISntwCwfWB7v2RHaRou+ADmaT9R3zZC/ZIiDv/Y2Wf5JooGCRgVVBsjwboprkxaTLg4ja5IJjxoJ2FZuqLAEk7qOQ2geRla77MwJqrcrp8eVTw9iS7Yei+TT6zaY7GU1u1NLRbd+XitIxV2JfzNh7/WPvP+4NVAkERLxiK6d3dHYRwxDG1oonVKP8F0+h6jODXynPlONdiFvPYNehbkssk2e76P/7E6m11uElA=="
       jwt-secret: "AgCbfCEIEDqTRwk1Ggep1hbJfbIRM9bikEM1nLlK//VJkYD0Su6gslouBjrFxe1/lrVX3Q75mjI0mVXvHBq4qHB+2OqpaalnfNoLntdRA0bF1g4BmRxG4WQ/+GELnqm/AtIc+8xd2ibVt3WpRtDbEhrsH63T299Pq+sz6of6gMrrNoyL8z5J/BN8Xrgwsua7XxjGo2P7d3bbg9I7Qggjc33nIqjK2y47mD2LaCCmte3kkp3dLqEKKJo6pNHSwVfDmrCZ+iLefxqAuL8wR+XjcwCfFVLHH2Bz56Y29jlLh1NiZDAhkR0+Bic+MJT8oaMcxFspczdWDWvR8puyTomHIzCS7hHn8neOcQDf4U+E+4kZX5jF0gh41Dk5DEZ7ri1swVvw7EjAPpw6qdpU5mbHLDPHfUE9LPeyGiIHZqH6TL7D7AzAuSE9z8ExDXHsrpR8zXns1WzIb+V9BFXrEwZZL1msDg4Nm/JPioRawE1PycROFfJw9W7Y6DcYd3Xw591r38kmx8JC4fkuUvqxxGYMJF6DD9wbgId/XmfIw6n2eHRomzg4XUMHmPpweF/SP2dSnFkQF0HwW5j/RX9KVQZeNKPv63MJ17z8vEgsbyKw7iP0yQxd3MkgjQZux6pubesm7+2gmtEmaW4e9zvBsndEbmi1iAyNufKCuoISk/1iI5CTV0wIdl5jQZeDcqZEMkQlaHmjqoyuTvAoKrNyALyFBqBaijHTHVC7KW0I4VFoYe+53MTeZlQErwcPBqLZWKdrpEQ="
-      translation-key: "AgBGYDeUhF3/TGjHMx350msTN8T02xDJv6WUoAEOWNLIUFjlfIiEUXN7T/tbBc2Shl4z6KjJGNGPz7re4J8cHvL7LdNBpxS67ZzYvZ2PmnPCfwOy04EDzGHZhvEHO2NUOZMrDbSafptGhkLES8HpIaTlK5K7VQkDYJ/Xo51p0otONhGTbWvpxdVesEQSd0ryW66OyLToCCQ+qdnH6iyJvH41keX6x/LMZTG4p6vsTqGLsLU/ivgwoxWLNGMLX5YDbWKu3WBZSLuuGeByAkM/Ol8xULrvb5hWxRqvGcgnheJOqTZBBLOqp4jL+crjAj0DNCuz7OfXz/1WUhIy7qjrJQtdXDJ+km6ROc5xfaTjeBMXXh9DrATI6ch5V1PDb34wX9TxcG1EWzEggtF6RhW+KSHHZPffJY6FyCOTuc2AJoKQQqpv9qgKFDBqHX8Cd6bbfehoP9ZtLEPJ86jwu3AqUICApqEWmrewNbHm40fjaNJ0USh0zZqpro42fypCu0KvMYm1U987ZZdHzyC30R5C5ujk3/zxAzVNhEikmAcE8+pUJrydwOZBCLEEqhQoDDtdrehM0HRB4JtwYWZDpw9zuXYqQjQaToEP954YyJ5nA1uAgSncKHQqglwPkBgkZVdb0bmhnwip2H4tpxJc6Fw8HsOkCwd1m2indHU9BZ89wz8ChgnvexuWG0Wm7BdB+K5hb5XUJaGcBwqqvX+6V68c6E46NAfJ8HyZNEJsWtXQ49NZXuczXejYHGA="
+      translation-key: "AgCWPmuxktNXBKs/Xhfp9RmsbE7jGuMd4GkBx1IHLgEIA21nibjf4Ck0nWhci4qqiS3wFrZzMkERW/WaXMuiB2atgY1u8atX1N+bjUzy15vT9rlL7//J+5as6bAq1zqIp8+1QJmJBuWkmQxMqHe2P3WX1KMH56QDjj4pQ7NkPWLpAE6BoPIlBdFd8WFluQYx9dd30X9fnS2sTS8noTLEoWbtzmg/eC94yo3OCQArmvyyCOEcdc/dDRl/X+0qE/tvYbO1DteHkLWY0N4KuNPVD9b1i+PLPaLY0t8coKqC0fBJMXgzOX1DKWkEIAPgqGrehbgYbkr36ZHoxFkVOCrGf4MiWmeauzAK1muqRsusoShpTt3jmGhj/Vl9VRxcXTXKvBC0y51fwTHZSJFJBc8GncSMxVhqzZGe5k3sxBfNij5ZcmFLpsdrc3YHZEMbeHvEaUeG9otReIgLL63DIJD4qMovP6mK0+0/pzUataS8ojH2k//4eZRU3LzGTHuLjWqEQfzLuDYGmIaXQmHrGojJIitV5T2WAYNnUdw0sR+Omn2IrNPjscUc/dPTN8W7Jamvo1P9Rv5PXFPE69fGFJHza3D9z8L0RDPrX19HS6esa/mkGe1tpyqAF7N1a1iKquLz18J/ViNYFosnknNqedtPdiDB6tOfA2vZArCwT6k0iti6hSjcyxZ3ePxywVkpfw85nItxH18ccPcriWNppNxNZGEySUBJm3jwjsXf8nu+4EtzIaw65MajgBw="
   alarm:
     enabled: true
     name: alarm
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-alarm
-      tag: 86e53b8f7ae37e69b6b79061d4cdccf405a72231
+      tag: 2177be75fce106ad409d626c032593bb96518ae2
     port: 8082
     replicas: 1
     resources:
@@ -168,7 +168,7 @@ services:
     name: information
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-information
-      tag: b58c79efbc205fe2023bfdfbfb24a0711d549152
+      tag: 31e253448feeb6ce397028a1aec96f59b8397cad
     port: 8080
     replicas: 1
     resources:
@@ -203,7 +203,7 @@ services:
     name: log
     image:
       repository: 879657431997.dkr.ecr.ap-northeast-2.amazonaws.com/eum-log
-      tag: 8a9e8aabdbc8e8b76301cda8c81c78e5a041f572
+      tag: 2f76a81c149783be58c33b540d3f00725b2dca0d
     port: 8085
     replicas: 1
     resources:
